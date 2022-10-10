@@ -1,7 +1,7 @@
 # GitHub Codespaces 体験ハンズオン
 
 - GitHub Codespaces を立ち上げる
-- Azure Extensions を眺める
+- 拡張機能を眺める（この時点では何もインストールされていない）
 - `pre-built` ブランチから codespace を立ち上げてみる
 - `az` や `func` のコマンドがインストールされていることを確認する
 - Azure Functions のプロジェクトを作成する
