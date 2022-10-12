@@ -1,14 +1,17 @@
-# GitHub Codespaces 体験ハンズオン
+# GitHub Codespaces + Microsoft Azure 体験ハンズオン
 
 ## GitHub Codespaces について知る
 
-- [GitHub Codespaces](https://github.co.jp/features/codespaces)
+[GitHub Codespaces](https://github.co.jp/features/codespaces) は、GitHub のプラットフォーム上でサポートされる、わずか数秒で起動する Visual Studio Code ベースの開発環境です。
+
+![GitHub Codespaces - 超高速で構築するクラウド開発環境](./docs/images/github-codespaces_hero.png)
 
 ### 特徴
 
 - GitHub プラットフォームに立ち上げられた独立した環境
 - 実態はコンテナだが、コンテナについての知識がなくても利用しやすい
 - ブラウザまたは Visual Studio Code から利用できる
+- ほとんどの Visual Studio Code の拡張機能を利用できる
 - GitHub とのシームレスな連携
 - ポートフォワーディングにより、あたかも手元の環境で動作してるかのようにアクセスできる（`localhost`）
 - [Development Containers](https://containers.dev/) に則ったカスタマイズができる
@@ -16,15 +19,21 @@
   - 拡張機能のプリインストール
   - 任意のイメージ及び Dockerfile で構築できる
 - 事前にビルドしておく機構を用いて、素早く環境を立ち上げられる
-- 利用量（アクティブな時間と利用しているボリューム量）に従った課金
-
+- 利用量（アクティブな時間とストレージ利用量）に従った課金
+  - コンピュート SKU: 2 ～ 32 core、ストレージ: 1GB/month
+  - 現在(2022年10月)の段階では、GitHub Team または GitHub Enterprise Cloud で利用する Organization の配下で利用できる。個人アカウントではウェイティングリストの通過が必要。
 
 ## Microsoft Azure について知る
 
 - [Microsoft Azure](https://azure.microsoft.com/ja-jp/)
 
+### このハンズオンで利用する範囲
 
-## ハンズオン シナリオ
+- FaaS (Functions as a Service) である [Azure Functions](https://learn.microsoft.com/ja-jp/azure/azure-functions/functions-overview) を用いて、ローカルでの実行およびクラウド上のリソースにデプロイするまでをご紹介します。
+
+## ハンズオン
+
+### シナリオ
 
 - GitHub Codespaces を立ち上げる
 - 拡張機能を眺める（この時点では何もインストールされていない）
@@ -37,3 +46,6 @@
 - 拡張機能で Azure にサインインする
   - ブラウザで作業している場合、同じブラウザでサインインが行われる。セッションを避けたい場合は、`Azure: Sign in with Device Code` でサインインするとよい
 - Functions のリソースを作成して、デプロイする
+
+### ハンズオン資料
+
