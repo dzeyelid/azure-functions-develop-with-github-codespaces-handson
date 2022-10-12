@@ -13,27 +13,54 @@
 - Microsoft Azure のアカウントを用意する
 
 
-## 手順
+## 手順＆解説
 
-- GitHub Codespaces を立ち上げる
+### GitHub Codespaces を立ち上げる
 
+このリポジトリのメインブランチには `devcontainer.json`（Development Containers の設定ファイル）がないので、GitHub Codespaces の default image で環境が立ち上がります。default image の詳細は、[vscode-dev-containers/containers/codespaces-linux](https://aka.ms/ghcs-default-image) をご参照ください。
 
-- 拡張機能を眺める（この時点では何もインストールされていない）
+default image は Ubuntu で構成されていて、`apt` を利用して追加のパッケージをインストールすることも可能です。また、主要な言語が含まれており、カスタマイズしなくても使える場合も多いです。テキストを書くだけなら、default image で事足ります。
 
+default image は Visual Studio Code の拡張機能はインストールされていませんが、自由にインストールすることができます。
 
-- `pre-built` ブランチから codespace を立ち上げてみる
+保存したファイルやインストールしたパッケージ、インストールした拡張機能は、その codespace のインスタンスを消すまでは保持されます。
 
-
-- 拡張機能がインストールされていることを確認する
-
-
-- `az` や `func` のコマンドがインストールされていることを確認する
+今回は、Azure Functions の開発を行いたいのですが、今ここで必要なパッケージや拡張機能をインストールしていると時間がかかってしまうので、"すでに用意されているイメージ" を使った環境を立ち上げてみましょう。
 
 
-- Azure Functions のプロジェクトを作成する
+### Prebuild が設定されたブランチから codespace を立ち上げてみる
+
+GitHub Codespaces は、起動するオプションを選ぶことができます。今回は、事前に用意しておいた `pre-built` ブランチで起動してみましょう。
+
+- ブランチ
+- 参照する Dev container の設定ファイル
+- codespace を配置するリージョン
+- SKU（コア数、メモリ、ストレージ量）
+
+`pre-built` ブランチには、`.devcontainer/devcontainer.json` と `.devcontainer/Dockerfile` が含まれており、このファイルがあると Codespaces はその設定をもとにイメージをビルドした上で環境を起動します。
+
+さて、お気づきでしょうか？即座に立ち上がりましたね？
+
+実は、リポジトリの設定で GitHub Codespaces の Prebuild という機能を設定しておくことで、先にイメージをビルドしておくことができます。利用するリージョンにイメージを保存しておいてくれるので、すぐダウンロードが終わり起動することができるのです。
+
+この Dev container の設定は、とても簡単にベースを作成できます。
+
+メニューから「View」→「Command Palette...」を開き、`Codespaces: Add Dev Container Configuration Files...` を選択してみましょう。
+
+すると、設定の定義一覧が表示されます。`Show All Definitions...` からすべての定義を表示し、`Azure Functions & Node.js` をみつけてみてください。
+
+これが今開いてもらっている `pre-built` ブランチで利用している Dev container の設定のベースです。私はこの設定のうち、Node.js のバージョンだけを `16` に変更して利用しています。
+
+この `Azure Functions & Node.js` イメージには、Azure Functions の開発に必要なパッケージや拡張機能が事前にインストールされています。
+
+ターミナルを開き、`az` や `func` コマンドを確認してみましょう。また、拡張機能の一覧を開き、「CODESPACES - INSTALLED」に「[Azure Account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)」や「[Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)」がインストールされていることが確認できます。
 
 
-- GitHub Codespaces 上でローカル実行する
+### Azure Functions のプロジェクトを作成する
+
+
+
+### GitHub Codespaces 上でローカル実行する
   - ポートフォワーディングにより、手元のマシンの `localhost` で接続できることを確認する
 
 
