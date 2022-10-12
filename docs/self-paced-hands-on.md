@@ -55,9 +55,34 @@ GitHub Codespaces は、起動するオプションを選ぶことができま�
 
 ターミナルを開き、`az` や `func` コマンドを確認してみましょう。また、拡張機能の一覧を開き、「CODESPACES - INSTALLED」に「[Azure Account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)」や「[Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)」がインストールされていることが確認できます。
 
+> **Note** このハンズオンでは機能説明をしやすいようにデフォルトではないブランチに prebuild を設定していますが、実際に利用するときは、デフォルトブランチ（`main`）に設定する方が直感的で、プロジェクトのメンバーがより早く環境にアクセスできるようになるでしょう。
+
 
 ### Azure Functions のプロジェクトを作成する
 
+それではさっそく Azure Functions の開発に着手しましょう！
+
+
+まず、今は `pre-built` ブランチが開かれているので、作業用のブランチに切替え、作業用のディレクトリを作成しておきましょう。メニューから「Terminal」→「New Terminal」を開き、下記を実行します。
+
+```
+git switch -c add-functions
+mkdir functions
+```
+
+つぎに、拡張機能を用いて Azure Functions の新規プロジェクトを生成しましょう。Command Palette で、`Azure Functions: Create New Project...` を選択します。
+
+ファイルを配置するディレクトリを問われるので、`Browse...` で先ほど作成した `functions` ディレクトリを選択してください。
+
+言語の選択では、お好きな言語を選択しましょう。（講師は `JavaScript` を選択します。不安のある方は同じものを選択してください。）
+
+つぎに、最初の関数のテンプレートを選択します。ここでは、API を作成したので、`HTTP trigger` を選択しましょう。
+
+HTTP trigger の名前は、そのまま決定（`Enter`キー押下）しておきます。
+
+認証レベルは `Anonymous` を選択しておきましょう。
+
+これで `HttpTrigger1` という HTTP trigger 関数が作成されました。
 
 
 ### GitHub Codespaces 上でローカル実行する
@@ -68,5 +93,5 @@ GitHub Codespaces は、起動するオプションを選ぶことができま�
   - ブラウザで作業している場合、同じブラウザでサインインが行われる。セッションを避けたい場合は、`Azure: Sign in with Device Code` でサインインするとよい
 
 
-- Functions のリソースを作成して、デプロイする
+## Functions のリソースを作成して、デプロイする
 
