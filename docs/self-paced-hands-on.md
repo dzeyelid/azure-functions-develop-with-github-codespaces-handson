@@ -114,6 +114,16 @@ Visual Studio Code で作業されている方は、`http://localhost:7071/api/H
 
 ###　Azure Functions を Microsoft Azure にデプロイする
 
+それでは最後に、作成した Azure Functions のプロジェクトを、Microsoft Azure にデプロイしてみましょう！
+
+Azure Functions のデプロイはいくつかの方法がありますか、今回は拡張機能[Azure Account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)」と「[Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)」を利用します。
+
+まず、拡張機能で Microsoft Azure にログインします。Command Palette を開き、`Azure: Sign in` または `Azure: Sign in with Device Code` を実行して Azure にログインしましょう。前者はアクティブなブラウザでログイン画面が開き認証を促されます。もし、アクティブなブラウザのセッションがサインインしたいアカウントと異なる場合、後者の方式でデバイスコードを用いてサインインを行なってください。
+
+サインインができたら、さらに Command Palette 
+
+`Azure Functions: Deploy to Function App...` 
+
 - 拡張機能で Azure にサインインする
   - ブラウザで作業している場合、同じブラウザでサインインが行われる。セッションを避けたい場合は、`Azure: Sign in with Device Code` でサインインするとよい
 
