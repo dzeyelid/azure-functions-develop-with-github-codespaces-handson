@@ -17,6 +17,10 @@
 
 ### GitHub Codespaces を立ち上げる
 
+それでは早速 GitHub Codespaces を立ち上げてみましょう！
+
+ブラウザまたは Visual Studio Code で立ち上げることができます。後半、ポートフォワーディングの動作が双方で異なりますが、どちらもサポートするのでお好きな方で立ち上げてみてください。
+
 このリポジトリのメインブランチには `devcontainer.json`（Development Containers の設定ファイル）がないので、GitHub Codespaces の default image で環境が立ち上がります。default image の詳細は、[vscode-dev-containers/containers/codespaces-linux](https://aka.ms/ghcs-default-image) をご参照ください。
 
 default image は Ubuntu で構成されていて、`apt` を利用して追加のパッケージをインストールすることも可能です。また、主要な言語が含まれており、カスタマイズしなくても使える場合も多いです。テキストを書くだけなら、default image で事足ります。
@@ -86,8 +90,29 @@ HTTP trigger の名前は、そのまま決定（`Enter`キー押下）してお
 
 
 ### GitHub Codespaces 上でローカル実行する
-  - ポートフォワーディングにより、手元のマシンの `localhost` で接続できることを確認する
 
+まずはローカル（ここでは GitHub Codespaces インスタンス上）で Azure Functions を実行してみましょう。
+
+すでに、デバッグ用の設定ファイルが配置されているので、F5キー押下、またはデバッグペインからすぐデバッグ実行ができます。
+
+すると Function Runtime のログが表示され起動されたら、API にアクセスしてみましょう。
+
+Visual Studio Code で作業されている方は、`http://localhost:7071/api/HttpTrigger1` にアクセスしてみてください。
+
+ブラウザで作業されている方は、ポートフォワーディングの設定を public に設定して開くアクセスできることを試してみましょう。ターミナルを開いているペインのタブで「PORTS」を選択し、`7071` の行を右クリックし表示されたメニューで「Port Visibility」→「Public」を選択することで、接続用のURLが発行されるのでそれを用いてアクセスします。`http://localhost:<port>` の部分を置き換え、 `https://<public url>/api/HttpTrigger1` にアクセスしてみてください。
+
+> **Note** GitHub Codespaces を Organization で利用している場合は、Port Visibility の「Private to Organization」を選択することで、Organization の認証が済んだセッション内でURLを利用できるようになります。
+
+> **Note** これらの ポートフォワーディングの「Port Visibility」の設定は、ブラウザ及び Visual Studio Code どちらでも利用可能です。
+
+`/api/HttpTrigger1` にアクセスすると、先ほど生成した HTTP trigger 関数が呼び出されレスポンスを返却していることがわかります。
+
+これであたかも手元の環境で作業しているかのようにスムーズに開発できることを体験いただけたかと思います。
+
+また、この環境は GitHub Codespaces 内に閉じられ、手元の環境に影響しないこともメリットの一つでしょう。
+
+
+###　Azure Functions を Microsoft Azure にデプロイする
 
 - 拡張機能で Azure にサインインする
   - ブラウザで作業している場合、同じブラウザでサインインが行われる。セッションを避けたい場合は、`Azure: Sign in with Device Code` でサインインするとよい
