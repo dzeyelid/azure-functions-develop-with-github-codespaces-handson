@@ -19,7 +19,17 @@
 
 それでは早速 GitHub Codespaces を立ち上げてみましょう！
 
-ブラウザまたは Visual Studio Code で立ち上げることができます。後半、ポートフォワーディングの動作が双方で異なりますが、どちらもサポートするのでお好きな方で立ち上げてみてください。
+リポジトリの「Code」ボタンを選択します。
+
+![](./images/run-first-codespace_001.png)
+
+すると、見慣れた「Local」とは別に「Codespaces」タブが有効になっているのが確認できます。「Create codespace on main」ボタンを選択します。
+
+![](./images/run-first-codespace_002.png)
+
+Codespaces は、ブラウザまたは Visual Studio Code で立ち上げることができます。後半、ポートフォワーディングの動作が双方で異なりますが、どちらもサポートするのでお好きな方で立ち上げてみてください。
+
+![](./images/first-codespace_001.png)
 
 このリポジトリのメインブランチには `devcontainer.json`（Development Containers の設定ファイル）がないので、GitHub Codespaces の default image で環境が立ち上がります。default image の詳細は、[vscode-dev-containers/containers/codespaces-linux](https://aka.ms/ghcs-default-image) をご参照ください。
 
@@ -34,6 +44,18 @@ default image は Visual Studio Code の拡張機能はインストールされ�
 
 ### Prebuild が設定されたブランチから codespace を立ち上げてみる
 
+リポジトリの「Code」ボタンを再度開き、「Create codespace on main」の横の矢印ボタンを選択します。
+
+![](./images/run-prebuilt-codespace_001.png)
+
+「Configure and create codespace」を選択します。
+
+![](./images/run-prebuilt-codespace_002.png)
+
+ボタンが「Configure and crate codespace」に変わるので、それを選択します。
+
+![](./images/run-prebuilt-codespace_003.png)
+
 GitHub Codespaces は、起動するオプションを選ぶことができます。今回は、事前に用意しておいた `pre-built` ブランチで起動してみましょう。
 
 - ブランチ
@@ -41,7 +63,11 @@ GitHub Codespaces は、起動するオプションを選ぶことができま�
 - codespace を配置するリージョン
 - SKU（コア数、メモリ、ストレージ量）
 
+![](./images/run-prebuilt-codespace_004.png)
+
 `pre-built` ブランチには、`.devcontainer/devcontainer.json` と `.devcontainer/Dockerfile` が含まれており、このファイルがあると Codespaces はその設定をもとにイメージをビルドした上で環境を起動します。
+
+![](./images/prebuilt-codespace_001.png)
 
 さて、お気づきでしょうか？即座に立ち上がりましたね？
 
@@ -51,7 +77,15 @@ GitHub Codespaces は、起動するオプションを選ぶことができま�
 
 メニューから「View」→「Command Palette...」を開き、`Codespaces: Add Dev Container Configuration Files...` を選択してみましょう。
 
+![](./images/open-command-palette.png)
+
+![](./images/add-dev-container-configuration-files_001.png)
+
 すると、設定の定義一覧が表示されます。`Show All Definitions...` からすべての定義を表示し、`Azure Functions & Node.js` をみつけてみてください。
+
+![](./images/add-dev-container-configuration-files_002.png)
+
+![](./images/add-dev-container-configuration-files_003.png)
 
 これが今開いてもらっている `pre-built` ブランチで利用している Dev container の設定のベースです。私はこの設定のうち、Node.js のバージョンだけを `16` に変更して利用しています。
 
@@ -59,13 +93,14 @@ GitHub Codespaces は、起動するオプションを選ぶことができま�
 
 ターミナルを開き、`az` や `func` コマンドを確認してみましょう。また、拡張機能の一覧を開き、「CODESPACES - INSTALLED」に「[Azure Account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)」や「[Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)」がインストールされていることが確認できます。
 
+![](./images/open-new-terminal.png)
+
 > **Note** このハンズオンでは機能説明をしやすいようにデフォルトではないブランチに prebuild を設定していますが、実際に利用するときは、デフォルトブランチ（`main`）に設定する方が直感的で、プロジェクトのメンバーがより早く環境にアクセスできるようになるでしょう。
 
 
 ### Azure Functions のプロジェクトを作成する
 
 それではさっそく Azure Functions の開発に着手しましょう！
-
 
 まず、今は `pre-built` ブランチが開かれているので、作業用のブランチに切替え、作業用のディレクトリを作成しておきましょう。メニューから「Terminal」→「New Terminal」を開き、下記を実行します。
 
@@ -76,15 +111,21 @@ mkdir functions
 
 つぎに、拡張機能を用いて Azure Functions の新規プロジェクトを生成しましょう。Command Palette で、`Azure Functions: Create New Project...` を選択します。
 
+![](./images/create-new-function-project_001.png)
+
 ファイルを配置するディレクトリを問われるので、`Browse...` で先ほど作成した `functions` ディレクトリを選択してください。
 
-言語の選択では、お好きな言語を選択しましょう。（講師は `JavaScript` を選択します。不安のある方は同じものを選択してください。）
+![](./images/create-new-function-project_002.png)
+
+言語の選択では、Functions を記述する言語を選択します。ここでは `JavaScript` を選択します。
 
 つぎに、最初の関数のテンプレートを選択します。ここでは、API を作成したので、`HTTP trigger` を選択しましょう。
 
 HTTP trigger の名前は、そのまま決定（`Enter`キー押下）しておきます。
 
 認証レベルは `Anonymous` を選択しておきましょう。
+
+![](./images/add-dev-container-configuration-files_003.png)
 
 これで `HttpTrigger1` という HTTP trigger 関数が作成されました。
 
