@@ -209,11 +209,17 @@ Function App の作成が完了したら、いよいよプロジェクトをデ�
 
 Command Palette で `Azure Functions: Deploy to Function App...` を実行してください。
 
+![](./images/deploy-to-function-app_001.png)
+
 使用するサブスクリプションを選択します。
 
 Function App のリソース一覧が表示されるので、先ほど作成した Function App を選択します。
 
+![](./images/deploy-to-function-app_002.png)
+
 「先にデプロイしたものを上書きするがよいか？」というポップアップが表示されるので、「Deploy」ボタンを選択して進めてください。
+
+![](./images/deploy-to-function-app_003.png)
 
 デプロイが終わるまでしばらく待ちます。
 
@@ -221,10 +227,14 @@ Function App のリソース一覧が表示されるので、先ほど作成し�
 
 「RESOURCES」の一覧を辿っていくと、先ほどデプロイした関数を確認することができます。
 
+![](./images/copy-function-url_001.png)
+
 HTTP trigger として作成した関数「HttpTrigger1」を右クリックしメニューから「Copy Function Url」を選択します。
+
+![](./images/copy-function-url_002.png)
 
 このようなURL `https://<function app name>.azurewebsites.net/api/httptrigger1` がコピーされ、それを実行すると先ほど作成した関数が動作していることが確認できます。
 
 
-## おさらい
+Congratulations!🎉
 
