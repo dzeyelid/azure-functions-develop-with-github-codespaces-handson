@@ -120,15 +120,25 @@ Azure Functions のデプロイはいくつかの方法がありますか、今�
 
 まず、拡張機能で Microsoft Azure にログインします。Command Palette を開き、`Azure: Sign in` または `Azure: Sign in with Device Code` を実行して Azure にログインしましょう。前者はアクティブなブラウザでログイン画面が開き認証を促されます。もし、アクティブなブラウザのセッションがサインインしたいアカウントと異なる場合、後者の方式でデバイスコードを用いてサインインを行なってください。
 
-サインインができたら、Azure Functions のリソース（Function App）を作成するために、Command Palette で `Azure Functions: Create Function App in Azure...` を選択します。
+サインインができたら、Azure Functions のリソース（Function App）を作成するために、Command Palette で `Azure Functions: Create Function App in Azure... (Advanced)` を選択します。
 
 使用するサブスクリプションを選択します。
 
-「Create new Function App in Azure (1/3)」で、作成する Function App リソース名を入力します。Function App のリソース名は、グローバルで一位である必要があります。（誰とも被ってはいけません）
+「Create new Function App in Azure (1/7)」で、作成する Function App リソース名を入力します。Function App のリソース名は、グローバルで一位である必要があります。（誰とも被ってはいけません）
 
-「Create new Function App in Azure (2/3)」では、ランタイムスタックを選択します。ここでは、「Node.js 16 LTS」を選択してください。
+「Create new Function App in Azure (2/7)」では、ランタイムスタックを選択します。ここでは、「Node.js 16 LTS」を選択してください。
 
-「Create new Function App in Azure (3/3)」では、リソースを配置するリージョンを選択しましょう。リージョンはそのリソースを利用するユーザーの地域に近いところを選択することが一般的です。
+「Create new Function App in Azure (3/8)」では、Function App のベースとする OS を選択します。ここでは、`Linux` を選択します。
+
+「Create new Function App in Azure (4/8)」では、Function App を配置するリソースグループを指定します。招待されているリソースグループを選択してください。
+
+「Create new Function App in Azure (5/8)」では、リソースを配置するリージョンを選択しましょう。リージョンはそのリソースを利用するユーザーの地域に近いところを選択することが一般的です。
+
+「Create new Function App in Azure (6/8)」では、課金体系を選択します。ここでは `Consumption` （従量課金）を選択します。
+
+「Create new Function App in Azure (7/8)」では、Function App の稼働のための保存領域としてのストレージアカウントを指定します。「+ Create new storage account」を選択し、任意の名前を指定します。ここでは、提示されたままの名前で進めてください。
+
+「Create new Function App in Azure (9/9)」では、モニタリングに使用する Aplication Insights のリソースを指定します。ここでは、「Skip for now」を選択し進めてください。
 
 Function App の作成が完了したら、いよいよプロジェクトをデプロイしましょう。
 
