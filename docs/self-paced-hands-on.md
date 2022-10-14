@@ -120,13 +120,36 @@ Azure Functions のデプロイはいくつかの方法がありますか、今�
 
 まず、拡張機能で Microsoft Azure にログインします。Command Palette を開き、`Azure: Sign in` または `Azure: Sign in with Device Code` を実行して Azure にログインしましょう。前者はアクティブなブラウザでログイン画面が開き認証を促されます。もし、アクティブなブラウザのセッションがサインインしたいアカウントと異なる場合、後者の方式でデバイスコードを用いてサインインを行なってください。
 
-サインインができたら、さらに Command Palette 
+サインインができたら、Azure Functions のリソース（Function App）を作成するために、Command Palette で `Azure Functions: Create Function App in Azure...` を選択します。
 
-`Azure Functions: Deploy to Function App...` 
+使用するサブスクリプションを選択します。
 
-- 拡張機能で Azure にサインインする
-  - ブラウザで作業している場合、同じブラウザでサインインが行われる。セッションを避けたい場合は、`Azure: Sign in with Device Code` でサインインするとよい
+「Create new Function App in Azure (1/3)」で、作成する Function App リソース名を入力します。Function App のリソース名は、グローバルで一位である必要があります。（誰とも被ってはいけません）
+
+「Create new Function App in Azure (2/3)」では、ランタイムスタックを選択します。ここでは、「Node.js 16 LTS」を選択してください。
+
+「Create new Function App in Azure (3/3)」では、リソースを配置するリージョンを選択しましょう。リージョンはそのリソースを利用するユーザーの地域に近いところを選択することが一般的です。
+
+Function App の作成が完了したら、いよいよプロジェクトをデプロイしましょう。
+
+Command Palette で `Azure Functions: Deploy to Function App...` を実行してください。
+
+使用するサブスクリプションを選択します。
+
+Function App のリソース一覧が表示されるので、先ほど作成した Function App を選択します。
+
+「先にデプロイしたものを上書きするがよいか？」というポップアップが表示されるので、「Deploy」ボタンを選択して進めてください。
+
+デプロイが終わるまでしばらく待ちます。
+
+デプロイが終わったら、左のメニューの Azure （Aのマーク）を開き、リソースを確認してみましょう。
+
+「RESOURCES」の一覧を辿っていくと、先ほどデプロイした関数を確認することができます。
+
+HTTP trigger として作成した関数「HttpTrigger1」を右クリックしメニューから「Copy Function Url」を選択します。
+
+このようなURL `https://<function app name>.azurewebsites.net/api/httptrigger1` がコピーされ、それを実行すると先ほど作成した関数が動作していることが確認できます。
 
 
-## Functions のリソースを作成して、デプロイする
+## おさらい
 
